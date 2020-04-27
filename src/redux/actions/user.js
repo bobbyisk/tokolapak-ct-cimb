@@ -23,12 +23,13 @@ export const loginHandler = (userData) => {
                         type: ON_LOGIN_SUCCESS,
                         payload: res.data[0],
                     });
+                    alert(`Halo, "${res.data[0].username}"`)
                 } else {
-                    alert("masuk");
                     dispatch({
                         type: ON_LOGIN_FAIL,
                         payload: "Username atau password salah",
                     });
+                    alert("Username atau password salah");
                 }
             })
             .catch((err) => {
@@ -81,7 +82,7 @@ export const registerHandler = (userData) => {
     return (dispatch) => {
         Axios.get(`${API_URL}/users`, {
             params: {
-                usrname: userData.username
+                username: userData.username
             }
         })
             .then((res) => {
@@ -90,6 +91,7 @@ export const registerHandler = (userData) => {
                         type: "ON_REGISTER_FAIL",
                         payload: "Username sudah digunakan",
                     });
+                    alert("Username sudah digunakan")
                 } else {
                     Axios.post(`${API_URL}/users`, userData)
                         .then((res) => {
@@ -98,6 +100,7 @@ export const registerHandler = (userData) => {
                                 type: ON_LOGIN_SUCCESS,
                                 payload: res.data
                             });
+                            alert("Gokil")
                         })
                         .catch((err) => {
                             console.log(err);
