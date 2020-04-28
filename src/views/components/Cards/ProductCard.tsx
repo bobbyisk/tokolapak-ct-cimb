@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 interface ProductCardData {
   id: number;
-  productName: string;
+  productName?: string;
   price: number;
   review: number;
 }
@@ -27,7 +27,7 @@ class ProductCard extends React.Component<ProductCardProps> {
           style={{ width: "224px" }}
         />
         <div>
-          <p className="mt-3">White T-Shirt</p>
+          <p className="mt-3">{this.props.data.productName}</p>
           <h5 style={{ fontWeight: "bolder" }}>Rp. 125.000</h5>
           <p className="small">Jakarta Selatan</p>
         </div>
