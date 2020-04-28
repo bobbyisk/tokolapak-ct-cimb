@@ -124,8 +124,9 @@ class Home extends React.Component {
   renderProducts = () => {
     return this.state.bestSellerData.map((val) => {
       return <ProductCard
+        data={val}
         className="m-2"
-        productName={val.productName} />;
+      />;
     });
   }
 
