@@ -36,7 +36,7 @@ class Cart extends React.Component {
             .then((res) => {
                 console.log(res);
                 alert("Deleted.");
-                this.getCartHandler();
+                // this.setState({ cartData: [res.data] })
             })
             .catch((err) => {
                 console.log(err);
@@ -65,7 +65,7 @@ class Cart extends React.Component {
                         {
                             this.state.cartData.map((val) => {
                                 return (
-                                    <tr>
+                                    <tr key={`cart-${val.id}`}>
                                         <td>
                                             <img
                                                 style={{ width: "100%", objectFit: "contain", height: "150px" }}
