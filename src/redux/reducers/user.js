@@ -22,7 +22,7 @@ export default (state = init_state, action) => {
         fullName,
         role,
         id,
-        cookieChecked: true
+        cookieChecked: true,
       };
     case ON_LOGIN_FAIL:
       return { ...state, errMsg: action.payload, cookieChecked: true };

@@ -1,19 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Axios from 'axios';
-import './Cart.css';
-import { API_URL } from '../../../constants/API.js'
+import React from "react";
+import { connect } from "react-redux";
+import Axios from "axios";
+
+import { API_URL } from "../../../constants/API";
+import ButtonUI from "../../components/Button/Button"
+import "./Cart.css";
 
 class Cart extends React.Component {
     componentDidMount() {
-        Axios.get(`${API_URL}/cart`, {
+        Axios.get(`${API_URL}/carts`, {
             params: {
                 userId: this.props.user.id,
                 _expand: "product",
-            }
+            },
         })
             .then((res) => {
-                console.log(res);
+                console.log(res.data);
             })
             .catch((err) => {
                 console.log(err);
@@ -22,8 +24,26 @@ class Cart extends React.Component {
 
     render() {
         return (
-            <div className="container" >
-                <div>Cart</div>
+            <div className="container">
+                {/* <div>Cart</div> */}
+                <table className="table mt-5">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>gambar</td>
+                            <td>iPhone</td>
+                            <td>5000000</td>
+                            <td><ButtonUI type="contained">Delete</ButtonUI></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         );
     }
@@ -31,8 +51,8 @@ class Cart extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user
+        user: state.user,
     };
-}
+};
 
 export default connect(mapStateToProps)(Cart);
