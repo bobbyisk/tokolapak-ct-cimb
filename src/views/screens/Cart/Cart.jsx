@@ -37,6 +37,7 @@ class Cart extends React.Component {
                 console.log(res);
                 alert("Deleted.");
                 // this.setState({ cartData: [res.data] })
+                this.getCartHandler();
             })
             .catch((err) => {
                 console.log(err);
