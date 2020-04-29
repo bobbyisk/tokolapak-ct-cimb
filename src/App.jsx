@@ -9,29 +9,43 @@ import "bootstrap/dist/css/bootstrap.css";
 import Home from "./views/screens/Home/Home";
 import Navbar from "./views/components/Navbar/Navbar";
 import AuthScreen from "./views/screens/Auth/AuthScreen";
+import ProductDetails from "./views/screens/ProductDetails/ProductDetails";
 import { userKeepLogin } from "./redux/actions";
+import Cart from "./views/screens/Cart/Cart";
 
 const cookieObj = new Cookie();
 
 class App extends React.Component {
   componentDidMount() {
-    let cookieResult = cookieObj.get("authData");
-    if (cookieResult) {
-      this.props.keepLogin(cookieResult);
-    }
+    setTimeout(() => {
+      let cookieResult = cookieObj.get("authData");
+      if (cookieResult) {
+        this.props.keepLogin(cookieResult);
+      }
+    }, 2000);
   }
 
   render() {
-    return (
-      <>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/auth" component={AuthScreen} />
-        </Switch>
-        <div style={{ height: "120px" }} />
-      </>
-    );
+    if (this.props.user.cookieChecked) {
+      return (
+        <>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/auth" component={AuthScreen} />
+            <Route
+              exact
+              path="/product/:productId"
+              component={ProductDetails}
+            />
+            <Route exact path="/cart" component={Cart} />
+          </Switch>
+          <div style={{ height: "120px" }} />
+        </>
+      );
+    } else {
+      return <div>Loading ...</div>;
+    }
   }
 }
 
