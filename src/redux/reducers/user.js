@@ -31,7 +31,7 @@ export default (state = init_state, action) => {
     case ON_LOGOUT_SUCCESS:
       return { ...init_state, cookieChecked: true };
     case "COOKIE_CHECK":
-      return { ...init_state, cookieChecked: true };
+      return { ...state, cookieChecked: true };
     default:
       return { ...state };
   }
