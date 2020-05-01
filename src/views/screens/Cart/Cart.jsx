@@ -116,10 +116,23 @@ class Cart extends React.Component {
   };
 
   confirmHandler = () => {
-    swal("Finished", "Thank you.", "success");
-    return this.state.cartData.map((val) => {
-      return this.deleteCartHandler(val.id)
-    })
+    const transactionsData = {
+      userId: this.props.user.id,
+      totalPrice: this.state.totalPrice,
+      status: "pending",
+      items: this.state.cartData
+    }
+    Axios.post(`${API_URL}/transactions`, transactionsData)
+      .then((res) => {
+        console.log(res);
+        swal("Finished", "Thank you.", "success");
+        this.state.cartData.map((val) => {
+          return this.deleteCartHandler(val.id)
+        })
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   componentDidMount() {

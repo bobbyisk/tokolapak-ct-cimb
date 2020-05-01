@@ -108,5 +108,107 @@
     }
   ],
   "carts": [],
-  "transactions": []
+  "transactions": [
+    {
+      "userId": 1,
+      "totalPrice": 74000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 1,
+          "productId": 1,
+          "quantity": 2,
+          "id": 1,
+          "product": {
+            "productName": "iPhone 7 +",
+            "price": 5000000,
+            "category": "Phone",
+            "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
+            "desc": "HP Terbaikk loh",
+            "id": 1
+          }
+        },
+        {
+          "userId": 1,
+          "productId": 3,
+          "quantity": 1,
+          "id": 2,
+          "product": {
+            "productName": "Macbook Pro (2019)",
+            "price": 20000000,
+            "category": "Laptop",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/m/b/mbp15touch-silver-select-cto-201807_3_1.jpeg",
+            "desc": "Laptop Terbaikk loh",
+            "id": 3
+          }
+        },
+        {
+          "userId": 1,
+          "productId": 2,
+          "quantity": 1,
+          "id": 3,
+          "product": {
+            "productName": "iPad Pro 3",
+            "price": 15000000,
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
+            "desc": "HP Terbaikk loh",
+            "id": 2
+          }
+        },
+        {
+          "userId": 1,
+          "productId": 8,
+          "quantity": 1,
+          "id": 4,
+          "product": {
+            "productName": "iPad 7 ",
+            "price": "6000000",
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-wifi-select-space-201909_geo_us.png",
+            "desc": "iPad baru",
+            "id": 8
+          }
+        },
+        {
+          "userId": 1,
+          "productId": 4,
+          "quantity": 1,
+          "id": 5,
+          "product": {
+            "name": "iMac (2019)",
+            "price": "23000000",
+            "category": "Desktop",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/m/imac-27-cto-hero-201903_1_1.jpeg",
+            "desc": "Desktop khusus para sultan gan.",
+            "id": 4,
+            "productName": "iMac (2019)"
+          }
+        }
+      ],
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "totalPrice": 45000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 2,
+          "productId": 2,
+          "quantity": 3,
+          "id": 1,
+          "product": {
+            "productName": "iPad Pro 3",
+            "price": 15000000,
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
+            "desc": "HP Terbaikk loh",
+            "id": 2
+          }
+        }
+      ],
+      "id": 2
+    }
+  ]
 }
