@@ -1,21 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import Axios from "axios";
-
 import "./Cart.css";
+
+import { Table, Alert } from "reactstrap";
+
+import Axios from "axios";
 import { API_URL } from "../../../constants/API";
-import ButtonUI from "../../components/Button/Button"
+import ButtonUI from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 class Cart extends React.Component {
     state = {
-        cartData: []
-    }
+        cartData: [],
+    };
 
-    componentDidMount() {
-        this.getCartHandler();
-    }
-
-    getCartHandler = () => {
+    getCartData = () => {
         Axios.get(`${API_URL}/carts`, {
             params: {
                 userId: this.props.user.id,
@@ -24,73 +23,80 @@ class Cart extends React.Component {
         })
             .then((res) => {
                 console.log(res.data);
-                this.setState({ cartData: res.data })
+                this.setState({ cartData: res.data });
             })
             .catch((err) => {
                 console.log(err);
             });
-    }
+    };
+
+    renderCartData = () => {
+        return this.state.cartData.map((val, idx) => {
+            const { quantity, product, id } = val;
+            const { productName, image, price } = product;
+            return (
+                <tr>
+                    <td>{idx + 1}</td>
+                    <td>{productName}</td>
+                    <td>{price}</td>
+                    <td>{quantity}</td>
+                    <td>
+                        {" "}
+                        <img
+                            src={image}
+                            alt=""
+                            style={{ width: "100px", height: "200px", objectFit: "contain" }}
+                        />{" "}
+                    </td>
+                    <td>
+                        <ButtonUI
+                            type="outlined"
+                            onClick={() => this.deleteCartHandler(id)}
+                        >
+                            Delete Item
+            </ButtonUI>
+                    </td>
+                </tr>
+            );
+        });
+    };
 
     deleteCartHandler = (id) => {
         Axios.delete(`${API_URL}/carts/${id}`)
             .then((res) => {
-                console.log(res);
-                alert("Deleted.");
-                // this.setState({ cartData: [res.data] })
-                this.getCartHandler();
+                this.getCartData();
             })
             .catch((err) => {
                 console.log(err);
             });
-    }
+    };
 
-    // renderCart = () => {
-    //     return 
-    // }
+    componentDidMount() {
+        this.getCartData();
+    }
 
     render() {
         return (
-            <div className="container">
-                {/* <div>Cart</div> */}
-                <table className="table mt-5">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            this.state.cartData.map((val) => {
-                                return (
-                                    <tr key={`cart-${val.id}`}>
-                                        <td>
-                                            <img
-                                                style={{ width: "100%", objectFit: "contain", height: "150px" }}
-                                                src={val.product.image}
-                                            />
-                                        </td>
-                                        <td>{val.product.productName}</td>
-                                        <td>{val.quantity}</td>
-                                        <td>
-                                            {
-                                                new Intl.NumberFormat("id-ID", {
-                                                    style: "currency",
-                                                    currency: "IDR",
-                                                }).format(val.product.price)
-                                            }
-                                        </td>
-                                        <td>
-                                            <ButtonUI type="contained" onClick={() => this.deleteCartHandler(val.id)}>Delete</ButtonUI>
-                                        </td>
-                                    </tr>
-                                )
-                            })}
-                    </tbody>
-                </table>
+            <div className="container py-4">
+                {this.state.cartData.length > 0 ? (
+                    <Table>
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>{this.renderCartData()}</tbody>
+                    </Table>
+                ) : (
+                        <Alert>
+                            Your cart is empty! <Link to="/">Go shopping</Link>
+                        </Alert>
+                    )}
             </div>
         );
     }

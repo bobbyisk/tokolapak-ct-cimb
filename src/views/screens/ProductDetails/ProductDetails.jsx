@@ -25,7 +25,7 @@ class ProductDetails extends React.Component {
     // Isinya: userId, productId, quantity
     // console.log(this.props.user.id);
     console.log(this.state.productData.id);
-    Axios.post(`${API_URL}/cart`, {
+    Axios.post(`${API_URL}/carts`, {
       userId: this.props.user.id,
       productId: this.state.productData.id,
       quantity: 1,

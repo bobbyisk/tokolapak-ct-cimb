@@ -4,7 +4,7 @@
       "username": "admin",
       "email": "admin@tokolapak.com",
       "password": "admin",
-      "repPassword": "admin",
+      "role": "admin",
       "id": 1
     },
     {
@@ -12,6 +12,7 @@
       "fullName": "Dora Emon",
       "password": "password",
       "email": "doraemon@mail.com",
+      "role": "user",
       "id": 2
     },
     {
@@ -19,6 +20,7 @@
       "fullName": "Dora Emon",
       "password": "password",
       "email": "doraemon@mail.com",
+      "role": "user",
       "id": 3
     }
   ],
@@ -34,18 +36,59 @@
     {
       "productName": "iPad Pro 3",
       "price": 15000000,
-      "category": "Tablet",
+      "category": "Tab",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
       "desc": "HP Terbaikk loh",
       "id": 2
     },
     {
-      "productName": "Macbook Pro",
+      "productName": "Macbook Pro (2019)",
       "price": 20000000,
       "category": "Laptop",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/m/b/mbp15touch-silver-select-cto-201807_3_1.jpeg",
-      "desc": "HP Terbaikk loh",
+      "desc": "Laptop Terbaikk loh",
       "id": 3
+    },
+    {
+      "productName": "iPhone 11 Pro Max",
+      "price": "24000000",
+      "category": "Phone",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+      "desc": "HP Kamera Boba",
+      "id": 4
+    },
+    {
+      "productName": "x",
+      "price": "2",
+      "category": "Phone",
+      "image": "",
+      "desc": "c",
+      "id": 5
+    },
+    {
+      "productName": "t",
+      "price": "1",
+      "category": "Tab",
+      "image": "",
+      "desc": "f",
+      "id": 6
+    },
+    {
+      "productName": "a",
+      "price": "34",
+      "category": "Phone",
+      "image": "wew",
+      "desc": "c",
+      "id": 7
+    },
+    {
+      "ProductName": "",
+      "price": "1",
+      "category": "Laptop",
+      "image": "",
+      "desc": "c",
+      "productName": "a",
+      "id": 8
     }
   ],
   "carts": [
@@ -63,19 +106,19 @@
     },
     {
       "userId": 1,
-      "productId": 1,
+      "productId": 2,
       "quantity": 1,
       "id": 3
     },
     {
       "userId": 1,
-      "productId": 2,
+      "productId": 3,
       "quantity": 1,
       "id": 4
     },
     {
       "userId": 1,
-      "productId": 3,
+      "productId": 1,
       "quantity": 1,
       "id": 5
     }
