@@ -22,11 +22,19 @@
       "email": "doraemon@mail.com",
       "role": "user",
       "id": 3
+    },
+    {
+      "username": "admin",
+      "fullName": "Super Admin",
+      "password": "password",
+      "email": "admin@mail.com",
+      "role": "admin",
+      "id": 4
     }
   ],
   "products": [
     {
-      "productName": "iPhone 7 Plus",
+      "productName": "iPhone 7 +",
       "price": 5000000,
       "category": "Phone",
       "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
@@ -50,77 +58,55 @@
       "id": 3
     },
     {
-      "productName": "iPhone 11 Pro Max",
-      "price": "24000000",
-      "category": "Phone",
-      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
-      "desc": "HP Kamera Boba",
-      "id": 4
+      "name": "iMac (2019)",
+      "price": "23000000",
+      "category": "Desktop",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/m/imac-27-cto-hero-201903_1_1.jpeg",
+      "desc": "Desktop khusus para sultan gan.",
+      "id": 4,
+      "productName": "iMac (2019)"
     },
     {
-      "productName": "x",
-      "price": "2",
-      "category": "Phone",
-      "image": "",
-      "desc": "c",
+      "productName": "iPhone 11 Pro Max",
+      "price": "24000000",
+      "category": "",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+      "desc": "HP Kamera boba",
       "id": 5
     },
     {
-      "productName": "t",
-      "price": "1",
-      "category": "Tab",
-      "image": "",
-      "desc": "f",
+      "productName": "iPhone 11 Max abis",
+      "price": "123123123",
+      "category": "Phone",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+      "desc": "asdasdasdsd",
       "id": 6
     },
     {
-      "productName": "a",
-      "price": "34",
+      "productName": "iPhone Max bet",
+      "price": "3132312",
       "category": "Phone",
-      "image": "wew",
-      "desc": "c",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+      "desc": "asdasdasdadadad",
       "id": 7
     },
     {
-      "ProductName": "",
-      "price": "1",
-      "category": "Laptop",
-      "image": "",
-      "desc": "c",
-      "productName": "a",
+      "productName": "iPad 7 ",
+      "price": "6000000",
+      "category": "Tab",
+      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-wifi-select-space-201909_geo_us.png",
+      "desc": "iPad baru",
       "id": 8
+    },
+    {
+      "productName": "OPPO Find X2 Pro",
+      "price": "5300000",
+      "category": "Phone",
+      "image": "https://image.oppo.com/content/dam/oppo/id/mkt/header/Compass-Pro%20orange-EN.png",
+      "desc": "Keluaran terbaru dari OPPO guys, STOCK TERBATAS!!",
+      "id": 9
     }
   ],
-  "carts": [
-    {
-      "userId": 2,
-      "productId": 2,
-      "quantity": 1,
-      "id": 1
-    },
-    {
-      "userId": 2,
-      "productId": 1,
-      "quantity": 1,
-      "id": 2
-    },
-    {
-      "userId": 1,
-      "productId": 2,
-      "quantity": 1,
-      "id": 3
-    },
-    {
-      "userId": 1,
-      "productId": 3,
-      "quantity": 1,
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "productId": 1,
-      "quantity": 1,
-      "id": 5
-    }
-  ]
+  "carts": [],
+  "transactions": []
 }

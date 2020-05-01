@@ -24,20 +24,62 @@ class ProductDetails extends React.Component {
     // POST method ke /cart
     // Isinya: userId, productId, quantity
     // console.log(this.props.user.id);
+    console.log(this.props.user.id)
     console.log(this.state.productData.id);
-    Axios.post(`${API_URL}/carts`, {
-      userId: this.props.user.id,
-      productId: this.state.productData.id,
-      quantity: 1,
+
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userId: this.props.user.id,
+        productId: this.state.productData.id,
+      }
     })
       .then((res) => {
-        console.log(res);
-        swal("Add to cart", "Your item has been added to your cart", "success");
+        console.log(res.data);
+        console.log(res.data.length);
+        if (res.data.length > 0) {
+          Axios.patch(`${API_URL}/carts/${res.data[0].id}`, {
+            quantity: res.data[0].quantity + 1
+          })
+            .then((res) => {
+              console.log(res);
+              swal("Add to cart", "Masuk put. Your item has been added to your cart", "success");
+            })
+            .catch((err) => {
+              console.log(err)
+            });
+        } else {
+          Axios.post(`${API_URL}/carts`, {
+            userId: this.props.user.id,
+            productId: this.state.productData.id,
+            quantity: 1,
+          })
+            .then((res) => {
+              console.log(res);
+              swal("Add to cart", "Masuk post. Your item has been added to your cart", "success");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       })
       .catch((err) => {
         console.log(err);
-      });
-  };
+      })
+  }
+
+  //   Axios.post(`${API_URL}/carts`, {
+  //     userId: this.props.user.id,
+  //     productId: this.state.productData.id,
+  //     quantity: 1,
+  //   })
+  //     .then((res) => {
+  //       console.log(res);
+  //       swal("Add to cart", "Your item has been added to your cart", "success");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   componentDidMount() {
     Axios.get(`${API_URL}/products/${this.props.match.params.productId}`)
