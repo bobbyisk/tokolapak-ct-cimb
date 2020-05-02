@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -108,12 +109,18 @@ class Navbar extends React.Component {
                   </small>
                 </CircleBg>
               </Link>
+
               <ButtonUI
                 onClick={this.logoutBtnHandler}
                 className="ml-3"
                 type="textual"
               >
-                Logout
+                <Link
+                  to="/auth"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Logout
+                </Link>
               </ButtonUI>
             </>
           ) : (

@@ -75,22 +75,6 @@
       "id": 5
     },
     {
-      "productName": "iPhone 11 Max abis",
-      "price": "123123123",
-      "category": "Phone",
-      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
-      "desc": "asdasdasdsd",
-      "id": 6
-    },
-    {
-      "productName": "iPhone Max bet",
-      "price": "3132312",
-      "category": "Phone",
-      "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
-      "desc": "asdasdasdadadad",
-      "id": 7
-    },
-    {
       "productName": "iPad 7 ",
       "price": "6000000",
       "category": "Tab",
@@ -209,6 +193,43 @@
         }
       ],
       "id": 2
+    },
+    {
+      "userId": 2,
+      "totalPrice": 53000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 2,
+          "productId": 2,
+          "quantity": 2,
+          "id": 1,
+          "product": {
+            "productName": "iPad Pro 3",
+            "price": 15000000,
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
+            "desc": "HP Terbaikk loh",
+            "id": 2
+          }
+        },
+        {
+          "userId": 2,
+          "productId": 4,
+          "quantity": 1,
+          "id": 2,
+          "product": {
+            "name": "iMac (2019)",
+            "price": "23000000",
+            "category": "Desktop",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/m/imac-27-cto-hero-201903_1_1.jpeg",
+            "desc": "Desktop khusus para sultan gan.",
+            "id": 4,
+            "productName": "iMac (2019)"
+          }
+        }
+      ],
+      "id": 3
     }
   ]
 }

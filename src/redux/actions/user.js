@@ -3,7 +3,7 @@ import { API_URL } from "../../constants/API";
 import Cookie from "universal-cookie";
 import userTypes from "../types/user";
 
-const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT_SUCCESS } = userTypes;
+const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT_SUCCESS, ON_SEARCH } = userTypes;
 
 const cookieObj = new Cookie();
 
@@ -105,7 +105,7 @@ export const registerHandler = (userData) => {
 
 export const searchProductData = (inputSearchProductData) => {
     return {
-        type: "ON_SEARCH",
+        type: ON_SEARCH,
         payload: inputSearchProductData
     }
 }

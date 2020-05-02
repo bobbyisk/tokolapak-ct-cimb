@@ -28,7 +28,7 @@ class Cart extends React.Component {
       .then((res) => {
         console.log(res.data);
         res.data.map((val) => {
-          total += val.quantity * val.product.price
+          return total += val.quantity * val.product.price
         })
         this.setState({ cartData: res.data, totalPrice: total });
       })

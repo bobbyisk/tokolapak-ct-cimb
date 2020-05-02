@@ -110,7 +110,7 @@ class AdminDashboard extends React.Component {
                                     >
                                         Edit
                   </ButtonUI>
-                                    <ButtonUI className="mt-3" type="textual">
+                                    <ButtonUI onClick={() => this.deleteProductHandler(id)} className="mt-3" type="textual">
                                         Delete
                   </ButtonUI>
                                 </div>
@@ -173,6 +173,17 @@ class AdminDashboard extends React.Component {
             })
             .catch((err) => {
                 swal("Error!", "Your item could not be edited", "error");
+                console.log(err);
+            });
+    };
+
+    deleteProductHandler = (id) => {
+        Axios.delete(`${API_URL}/products/${id}`)
+            .then((res) => {
+                swal("Success!", "Your item has been deleted", "success");
+                this.getProductList();
+            })
+            .catch((err) => {
                 console.log(err);
             });
     };
