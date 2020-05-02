@@ -1,3 +1,23 @@
+## Ide Final Project
+
+Sejauh ini, ide yang saya rencanakan adalah membuat aplikasi persewaan buku dimana pelanggan dapat memesan layanan melalui aplikasi.
+
+Fitur:
+
+- User dapat memilih buku dan jumlah buku yang ingin di pinjam. Lalu melakukan pembayaran biaya sewa buku (per hari) dan memasukkan alamat untuk dikirimkan buku yang disewa.
+- Admin dapat input buku, menghapus buku, dan merubah stok buku, dan merubah status pembayaran/pengiriman buku.
+
+Menu:
+- Home
+- Filter buku berdasarkan genre
+- Request buku yang tidak ada
+- Login/register menu
+- Status pembayaran pinjaman buku dan deadline pimnjaman buku
+
+Apabila user telat dalam mengembalikan buku, maka akan dikenakan denda per hari.
+
+------------------------------------------------------
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
