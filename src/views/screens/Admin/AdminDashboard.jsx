@@ -109,10 +109,10 @@ class AdminDashboard extends React.Component {
                                         type="contained"
                                     >
                                         Edit
-                  </ButtonUI>
+                                    </ButtonUI>
                                     <ButtonUI onClick={() => this.deleteProductHandler(id)} className="mt-3" type="textual">
                                         Delete
-                  </ButtonUI>
+                                    </ButtonUI>
                                 </div>
                             </div>
                         </td>
@@ -266,7 +266,7 @@ class AdminDashboard extends React.Component {
                         <div className="col-3 mt-3">
                             <ButtonUI onClick={this.createProductHandler} type="contained">
                                 Create Product
-              </ButtonUI>
+                            </ButtonUI>
                         </div>
                     </div>
                 </div>
@@ -336,7 +336,7 @@ class AdminDashboard extends React.Component {
                                     type="outlined"
                                 >
                                     Cancel
-                </ButtonUI>
+                                </ButtonUI>
                             </div>
                             <div className="col-5 mt-3">
                                 <ButtonUI
@@ -345,7 +345,7 @@ class AdminDashboard extends React.Component {
                                     type="contained"
                                 >
                                     Save
-                </ButtonUI>
+                                </ButtonUI>
                             </div>
                         </div>
                     </ModalBody>

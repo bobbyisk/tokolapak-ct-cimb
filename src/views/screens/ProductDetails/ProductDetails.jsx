@@ -42,7 +42,7 @@ class ProductDetails extends React.Component {
           })
             .then((res) => {
               console.log(res);
-              swal("Add to cart", "Masuk put. Your item has been added to your cart", "success");
+              swal("Add to cart", "Your item has been added to your cart", "success");
             })
             .catch((err) => {
               console.log(err)
@@ -55,7 +55,7 @@ class ProductDetails extends React.Component {
           })
             .then((res) => {
               console.log(res);
-              swal("Add to cart", "Masuk post. Your item has been added to your cart", "success");
+              swal("Add to cart", "Your item has been added to your cart", "success");
             })
             .catch((err) => {
               console.log(err);

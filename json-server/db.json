@@ -46,7 +46,7 @@
       "price": 15000000,
       "category": "Tab",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
-      "desc": "HP Terbaikk loh",
+      "desc": "Tablet Terbaikk loh",
       "id": 2
     },
     {
@@ -69,7 +69,7 @@
     {
       "productName": "iPhone 11 Pro Max",
       "price": "24000000",
-      "category": "",
+      "category": "Phone",
       "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
       "desc": "HP Kamera boba",
       "id": 5
@@ -91,7 +91,32 @@
       "id": 9
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "userId": 1,
+      "productId": 1,
+      "quantity": 2,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "productId": 5,
+      "quantity": 1,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "productId": 3,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "productId": 4,
+      "quantity": 1,
+      "id": 4
+    }
+  ],
   "transactions": [
     {
       "userId": 1,
@@ -230,6 +255,100 @@
         }
       ],
       "id": 3
+    },
+    {
+      "userId": 2,
+      "totalPrice": 69000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 2,
+          "productId": 2,
+          "quantity": 1,
+          "id": 1,
+          "product": {
+            "productName": "iPad Pro 3",
+            "price": 15000000,
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-pro-11-select-cell-spacegray-201810.png",
+            "desc": "HP Terbaikk loh",
+            "id": 2
+          }
+        },
+        {
+          "userId": 2,
+          "productId": 5,
+          "quantity": 2,
+          "id": 2,
+          "product": {
+            "productName": "iPhone 11 Pro Max",
+            "price": "24000000",
+            "category": "",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-11-pro-max-midnight-green_3.png",
+            "desc": "HP Kamera boba",
+            "id": 5
+          }
+        },
+        {
+          "userId": 2,
+          "productId": 8,
+          "quantity": 1,
+          "id": 3,
+          "product": {
+            "productName": "iPad 7 ",
+            "price": "6000000",
+            "category": "Tab",
+            "image": "https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/ipad-wifi-select-space-201909_geo_us.png",
+            "desc": "iPad baru",
+            "id": 8
+          }
+        }
+      ],
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "totalPrice": 20000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 1,
+          "productId": 1,
+          "quantity": 4,
+          "id": 1,
+          "product": {
+            "productName": "iPhone 7 +",
+            "price": 5000000,
+            "category": "Phone",
+            "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
+            "desc": "HP Terbaikk loh",
+            "id": 1
+          }
+        }
+      ],
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "totalPrice": 5000000,
+      "status": "pending",
+      "items": [
+        {
+          "userId": 1,
+          "productId": 1,
+          "quantity": 1,
+          "id": 1,
+          "product": {
+            "productName": "iPhone 7 +",
+            "price": 5000000,
+            "category": "Phone",
+            "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
+            "desc": "HP Terbaikk loh",
+            "id": 1
+          }
+        }
+      ],
+      "id": 6
     }
   ]
 }

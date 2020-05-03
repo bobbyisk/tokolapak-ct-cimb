@@ -51,7 +51,7 @@ class Navbar extends React.Component {
       <div className="d-flex flex-row justify-content-between align-items-center py-4 navbar-container">
         <div className="logo-text">
           <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
-            LOGO
+            TokoLapak
           </Link>
         </div>
         <div
