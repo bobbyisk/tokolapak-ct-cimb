@@ -21,6 +21,8 @@ import CarouselShowcaseItem from "./CarouselShowcaseItem.tsx";
 import Colors from "../../../constants/Colors";
 import { API_URL } from "../../../constants/API";
 
+import { addCartQuantity } from "../../../redux/actions/qtycart";
+
 const dummy = [
   {
     productName: "iPhone X",
@@ -126,9 +128,31 @@ class Home extends React.Component {
       })
   }
 
+  cartQuantityHandler = () => {
+    let total = 0
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userId: this.props.user.id,
+        // _expand: "product",
+      },
+    })
+      .then((res) => {
+        console.log("Ini buar cart qty: " + res.data);
+        // res.data.map((val) => {
+        //   return total += val.quantity
+        // })
+        total += res.data.length
+        // this.setState({ cartData: res.data });
+        this.props.onCart(total);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   renderProducts = () => {
     return this.state.bestSellerData.map((val) => {
-      if (val.productName.toLowerCase().startsWith(this.props.user.searchProduct.toLowerCase())) {
+      if (val.productName.toLowerCase().includes(this.props.search.searchProduct.toLowerCase())) {
         return (
           <Link
             style={{ textDecoration: "none", color: "inherit" }}
@@ -142,6 +166,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
+    this.cartQuantityHandler();
     this.getBestSellerData();
   }
 
@@ -250,8 +275,13 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    search: state.search
   }
 }
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = {
+  onCart: addCartQuantity
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

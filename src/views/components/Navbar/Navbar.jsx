@@ -78,19 +78,64 @@ class Navbar extends React.Component {
               >
                 <DropdownToggle tag="div" className="d-flex">
                   <FontAwesomeIcon icon={faUser} style={{ fontSize: 24 }} />
-                  <p className="small ml-3 mr-4">{this.props.user.username}</p>
+                  <p className="small ml-3 mr-4" style={{ cursor: "pointer" }}>{this.props.user.username}</p>
                 </DropdownToggle>
                 <DropdownMenu className="mt-2">
-                  <DropdownItem>
-                    <Link
-                      style={{ color: "inherit", textDecoration: "none" }}
-                      to="/admin/dashboard"
-                    >
-                      Dashboard
-                    </Link>
-                  </DropdownItem>
-                  <DropdownItem>Members</DropdownItem>
-                  <DropdownItem>Payments</DropdownItem>
+                  {this.props.user.role === "admin" ? (
+                    <>
+                      <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/dashboard"
+                        >
+                          Dashboard
+                      </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/members"
+                        >
+                          Members
+                      </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/payments"
+                        >
+                          Payments
+                      </Link>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <Link
+                          style={{ color: "inherit", textDecoration: "none" }}
+                          to="/admin/reports"
+                        >
+                          Reports
+                      </Link>
+                      </DropdownItem>
+                    </>
+                  ) : (
+                      <>
+                        <DropdownItem>
+                          <Link
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            to="/history"
+                          >
+                            History
+                          </Link>
+                        </DropdownItem>
+                        <DropdownItem>
+                          <Link
+                            style={{ color: "inherit", textDecoration: "none" }}
+                            to="/wishlist"
+                          >
+                            Wishlist
+                          </Link>
+                        </DropdownItem>
+                      </>
+                    )}
                 </DropdownMenu>
               </Dropdown>
               <Link
@@ -105,7 +150,7 @@ class Navbar extends React.Component {
                 />
                 <CircleBg>
                   <small style={{ color: "#3C64B1", fontWeight: "bold" }}>
-                    4
+                    {this.props.qtycart.quantityCart}
                   </small>
                 </CircleBg>
               </Link>
@@ -151,12 +196,11 @@ class Navbar extends React.Component {
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    qtycart: state.qtycart
   };
 };
-
 const mapDispatchToProps = {
   onLogout: logoutHandler,
   onSearchProductData: searchProductData
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

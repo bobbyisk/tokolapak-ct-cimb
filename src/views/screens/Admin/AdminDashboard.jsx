@@ -9,6 +9,8 @@ import ButtonUI from "../../components/Button/Button";
 import TextField from "../../components/TextField/TextField";
 
 import swal from "sweetalert";
+import { connect } from "react-redux";
+import { addCartQuantity } from "../../../redux/actions/qtycart";
 
 class AdminDashboard extends React.Component {
     state = {
@@ -192,7 +194,30 @@ class AdminDashboard extends React.Component {
         this.setState({ modalOpen: !this.state.modalOpen });
     };
 
+    cartQuantityHandler = () => {
+        let total = 0
+        Axios.get(`${API_URL}/carts`, {
+            params: {
+                userId: this.props.user.id,
+                // _expand: "product",
+            },
+        })
+            .then((res) => {
+                console.log("Ini buar cart qty: " + res.data);
+                // res.data.map((val) => {
+                //     return total += val.quantity
+                // })
+                total += res.data.length
+                // this.setState({ cartData: res.data });
+                this.props.onCart(total);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     componentDidMount() {
+        this.cartQuantityHandler()
         this.getProductList();
     }
 
@@ -355,4 +380,14 @@ class AdminDashboard extends React.Component {
     }
 }
 
-export default AdminDashboard;
+const mapStateToProps = (state) => {
+    return {
+        user: state.user,
+    };
+};
+
+const mapDispatchToProps = {
+    onCart: addCartQuantity
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdminDashboard);

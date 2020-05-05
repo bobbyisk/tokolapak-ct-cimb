@@ -1,6 +1,6 @@
 import userTypes from "../types/user";
 
-const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT_SUCCESS, ON_SEARCH } = userTypes;
+const { ON_LOGIN_FAIL, ON_LOGIN_SUCCESS, ON_LOGOUT_SUCCESS } = userTypes;
 
 const init_state = {
   id: 0,
@@ -10,13 +10,12 @@ const init_state = {
   role: "",
   errMsg: "",
   cookieChecked: false,
-  searchProduct: ""
 };
 
 export default (state = init_state, action) => {
   switch (action.type) {
     case ON_LOGIN_SUCCESS:
-      const { username, fullName, role, id } = action.payload;
+      const { username, fullName, role, id, cookieChecked } = action.payload;
       return {
         ...state,
         username,
@@ -33,8 +32,6 @@ export default (state = init_state, action) => {
       return { ...init_state, cookieChecked: true };
     case "COOKIE_CHECK":
       return { ...state, cookieChecked: true };
-    case ON_SEARCH:
-      return { ...state, cookieChecked: true, searchProduct: action.payload };
     default:
       return { ...state };
   }

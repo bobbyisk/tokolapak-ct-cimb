@@ -24,7 +24,6 @@ export const loginHandler = (userData) => {
                         payload: res.data[0],
                     });
                 } else {
-                    alert("masuk");
                     dispatch({
                         type: ON_LOGIN_FAIL,
                         payload: "Username atau password salah",
@@ -102,13 +101,6 @@ export const registerHandler = (userData) => {
             });
     };
 };
-
-export const searchProductData = (inputSearchProductData) => {
-    return {
-        type: ON_SEARCH,
-        payload: inputSearchProductData
-    }
-}
 
 export const cookieChecker = () => {
     return {

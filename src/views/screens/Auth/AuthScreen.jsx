@@ -29,7 +29,7 @@ class AuthScreen extends React.Component {
 
   componentDidUpdate() {
     if (this.props.user.id) {
-      alert("login");
+      alert("Logged in.");
       const cookie = new Cookies();
       cookie.set("authData", JSON.stringify(this.props.user), { path: "/" });
     }

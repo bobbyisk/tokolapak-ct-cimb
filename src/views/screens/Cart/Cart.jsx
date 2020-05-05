@@ -9,12 +9,24 @@ import Axios from "axios";
 import { API_URL } from "../../../constants/API";
 import ButtonUI from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import { addCartQuantity } from "../../../redux/actions/qtycart";
 
 class Cart extends React.Component {
   state = {
     cartData: [],
     isCheckout: false,
-    totalPrice: 0
+    totalPrice: 0,
+    totalKirim: 0,
+    checkoutItems: []
+  };
+
+  inputHandler = (e, field) => {
+    let { value } = e.target;
+    this.setState({
+      ...this.state,
+      [field]: value,
+    });
+    // alert(parseInt(this.state.totalKirim) + parseInt(this.state.totalPrice))
   };
 
   getCartData = () => {
@@ -36,6 +48,42 @@ class Cart extends React.Component {
         console.log(err);
       });
   };
+
+  checkboxHandler = (e, idx) => {
+    const { checked } = e.target;
+
+    if (checked) {
+      this.setState({ checkoutItems: [...this.state.checkoutItems, idx] })
+    } else {
+      this.setState({
+        checkoutItems: [
+          ...this.state.checkoutItems.filter((val) => val !== idx)
+        ]
+      })
+    }
+  }
+
+  cartQuantityHandler = () => {
+    let total = 0
+    Axios.get(`${API_URL}/carts`, {
+      params: {
+        userId: this.props.user.id,
+        _expand: "product",
+      },
+    })
+      .then((res) => {
+        console.log("Ini buar cart qty: " + res.data);
+        // res.data.map((val) => {
+        //   return total += val.quantity
+        // })
+        total += res.data.length
+        this.setState({ cartData: res.data });
+        this.props.onCart(total);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   renderCartData = () => {
     return this.state.cartData.map((val, idx) => {
@@ -68,6 +116,13 @@ class Cart extends React.Component {
             >
               Delete Item
             </ButtonUI>
+          </td>
+          <td>
+            <input
+              type="checkbox"
+              onChange={(e) => this.checkboxHandler(e, idx)}
+              className="form-control"
+            />
           </td>
         </tr>
       );
@@ -108,6 +163,7 @@ class Cart extends React.Component {
   deleteCartHandler = (id) => {
     Axios.delete(`${API_URL}/carts/${id}`)
       .then((res) => {
+        this.cartQuantityHandler()
         this.getCartData();
       })
       .catch((err) => {
@@ -116,15 +172,30 @@ class Cart extends React.Component {
   };
 
   confirmHandler = () => {
-    const transactionsData = {
+    Axios.post(`${API_URL}/transactions`, {
       userId: this.props.user.id,
-      totalPrice: this.state.totalPrice,
+      totalPrice: parseInt(this.state.totalKirim) + parseInt(this.state.totalPrice),
       status: "pending",
-      items: this.state.cartData
-    }
-    Axios.post(`${API_URL}/transactions`, transactionsData)
+      buyDate: new Date().toLocaleDateString(),
+      buyEndDate: "-",
+    })
       .then((res) => {
         console.log(res);
+        this.state.cartData.map((val) => {
+          Axios.post(`${API_URL}/transaction_details`, {
+            transactionId: res.data.id,
+            productId: val.product.id,
+            price: val.product.price,
+            quantity: val.quantity,
+            totalPrice: val.product.price * val.quantity
+          })
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        })
         swal("Finished", "Thank you.", "success");
         this.state.cartData.map((val) => {
           return this.deleteCartHandler(val.id)
@@ -136,6 +207,7 @@ class Cart extends React.Component {
   }
 
   componentDidMount() {
+    this.cartQuantityHandler()
     this.getCartData();
   }
 
@@ -153,6 +225,7 @@ class Cart extends React.Component {
                   <th>Quantity</th>
                   <th>Image</th>
                   <th>Action</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>{this.renderCartData()}</tbody>
@@ -179,6 +252,7 @@ class Cart extends React.Component {
                   <thead>
                     <tr>
                       <th>Total Price</th>
+                      <th>Payment Method</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -186,8 +260,20 @@ class Cart extends React.Component {
                       <td>
                         {
                           new Intl.NumberFormat("id-ID",
-                            { style: "currency", currency: "IDR" }).format(this.state.totalPrice)
+                            { style: "currency", currency: "IDR" }).format((parseInt(this.state.totalKirim) + parseInt(this.state.totalPrice)))
                         }
+                      </td>
+                      <td>
+                        <select
+                          value={this.state.totalKirim}
+                          className="custom-text-input"
+                          onChange={(e) => this.inputHandler(e, "totalKirim")}
+                        >
+                          <option value={100000}>Instant</option>
+                          <option value={50000}>Same Day</option>
+                          <option value={20000}>Express</option>
+                          <option value={0}>Economy</option>
+                        </select>
                       </td>
                     </tr>
                   </tbody>
@@ -212,4 +298,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = {
+  onCart: addCartQuantity
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);
