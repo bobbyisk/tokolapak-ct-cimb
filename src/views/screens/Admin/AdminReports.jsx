@@ -179,9 +179,6 @@ class AdminReports extends React.Component {
     render() {
         return (
             <div className="container py-4">
-                <center>
-                    <input className="my-3" type="button" value="Please Click to get the value in second table :)" onClick={() => this.toQuantity()} />
-                </center>
                 {/* <input type="button" value="Test" onClick={this.getProductIdAndQuantity} /> */}
                 <Table>
                     <thead>
@@ -195,6 +192,9 @@ class AdminReports extends React.Component {
                         {this.renderTransactionsData()}
                     </tbody>
                 </Table>
+                <center>
+                    <input className="my-3" type="button" value="Please Click to get the value in second table :)" onClick={() => this.toQuantity()} />
+                </center>
                 <Table>
                     <thead>
                         <tr>
