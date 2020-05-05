@@ -1,31 +1,20 @@
 import React from "react";
 import "./AdminDashboard.css";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import Axios from "axios";
-
 import { API_URL } from "../../../constants/API";
-
-import ButtonUI from "../../components/Button/Button";
-import TextField from "../../components/TextField/TextField";
-
-import swal from "sweetalert";
-import { connect } from "react-redux";
-import { addCartQuantity } from "../../../redux/actions/qtycart";
 import { Table, Alert } from "reactstrap";
-
 export default class AdminReports extends React.Component {
 
     state = {
         transactionsData: [],
-        userNameTemp: [],
-        totalBelanja: {},
-        dataBeneran: [],
+        userIdTemp: [],
         transactionDetailsData: []
     }
 
     getTransactionsData = () => {
         Axios.get(`${API_URL}/transactions`, {
             params: {
+                status: "finished",
                 _expand: "user"
             }
         })
@@ -53,35 +42,24 @@ export default class AdminReports extends React.Component {
     //         })
     // }
 
+    sumTotalPrice = (userId) => {
+        let total = 0
+        this.state.transactionsData.map((val) => {
+            if (val.userId == userId) {
+                total += val.totalPrice
+            }
+        })
+        return total
+    }
+
     renderTransactionsData = () => {
         return this.state.transactionsData.map((val, idx) => {
             const { user, totalPrice, status, userId } = val
             const { username } = user
             let total = 0
-            // if (status == "finished") {
-            //     if (this.state.userName.includes(username)) {
-            //         total = totalPrice + this.state.totalBelanja.username
-            //         this.state.userNameTemp.push(username)
-            //         this.state.totalBelanja.setState({ ...this.state.totalBelanja, username: total })
-            //     } else {
-            //         total = 0
-            //         total = totalPrice
-            //         this.state.userNameTemp.push(username)
-            //         this.state.userNameTemp.push(username)
-            //         this.state.totalBelanja.setState({ ...this.state.totalBelanja, username: totalPrice })
-            //         // return (
-            //         //     <>
-            //         //         <tr>
-            //         //             <td>{username}</td>
-            //         //             <td>{status}</td>
-            //         //             <td>{total}</td>
-            //         //         </tr>
-            //         //     </>
-            //         // )
-            //     }
 
-            // }
-            if (status == "finished") {
+            if (!this.state.userIdTemp.includes(userId)) {
+                this.state.userIdTemp.push(userId)
                 return (
                     <>
                         <tr>
@@ -90,35 +68,20 @@ export default class AdminReports extends React.Component {
                             <td>{
                                 new Intl.NumberFormat(
                                     "id-ID",
-                                    { style: "currency", currency: "IDR" }).format(totalPrice)
+                                    { style: "currency", currency: "IDR" }).format(this.sumTotalPrice(userId))
                             }</td>
                         </tr>
                     </>
                 )
+
             }
+            // }
         })
     }
-
-    // renderBeneran = () => {
-    //     this.state.dataBeneran.push(this.state.totalBelanja)
-    //     console.log(this.state.dataBeneran)
-    //     return this.state.dataBeneran.map((val, idx) => {
-    //         return (
-    //             <>
-    //                 <tr>
-    //                     <td>{val.username}</td>
-    //                     <td>{val.totalPrice}</td>
-    //                 </tr>
-    //             </>
-    //         )
-    //     })
-    // }
 
     componentDidMount() {
         this.getTransactionsData()
     }
-
-
 
     render() {
         return (
