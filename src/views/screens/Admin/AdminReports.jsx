@@ -1,7 +1,7 @@
 import React from 'react'
 import Axios from "axios";
 import { API_URL } from "../../../constants/API";
-import { Table } from "reactstrap";
+import { Table, Button } from "reactstrap";
 import { connect } from "react-redux";
 import { addCartQuantity } from "../../../redux/actions/qtycart";
 
@@ -13,7 +13,7 @@ class AdminReports extends React.Component {
         transactionDetailsData: [],
         productIdAndQuantityData: [],
         productData: [],
-
+        isClick: false
     }
 
     getTotalPrice = () => {
@@ -73,6 +73,10 @@ class AdminReports extends React.Component {
             .catch((err) => {
                 console.log(err);
             })
+    }
+
+    toQuantity = () => {
+        this.setState({ productIdAndQuantityData: [...this.state.productIdAndQuantityData] })
     }
 
     sumTotalPrice = (userId) => {
@@ -175,6 +179,9 @@ class AdminReports extends React.Component {
     render() {
         return (
             <div className="container py-4">
+                <center>
+                    <input className="my-3" type="button" value="Please Click to get the value in second table :)" onClick={() => this.toQuantity()} />
+                </center>
                 {/* <input type="button" value="Test" onClick={this.getProductIdAndQuantity} /> */}
                 <Table>
                     <thead>
