@@ -18,7 +18,7 @@ import AdminMembers from "./views/screens/Admin/AdminMembers";
 import AdminPayments from "./views/screens/Admin/AdminPayments";
 import History from "./views/screens/History/History";
 import NotFound from "./views/screens/NotFound/NotFound";
-import AdminReports from "./views/screens/Admin/AdminReports";
+import AdminReports from "./views/screens/Admin/AdminReports.jsx";
 
 const cookieObj = new Cookie();
 
@@ -47,6 +47,18 @@ class App extends React.Component {
     }
   };
 
+  renderUserRoutes = () => {
+    if (this.props.user.role === "admin" || this.props.user.role === "user") {
+      return (
+        <>
+          <Route exact path="/wishlist" component={Wishlist} />
+          <Route exact path="/history" component={History} />
+        </>
+      )
+    }
+  }
+
+
   render() {
     if (this.props.user.cookieChecked) {
       return (
@@ -61,10 +73,8 @@ class App extends React.Component {
               component={ProductDetails}
             />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/wishlist" component={Wishlist} />
-            <Route exact path="/history" component={History} />
-
             {this.renderAdminRoutes()}
+            {this.renderUserRoutes()}
             {/* <Route path="*" component={} /> */}
             <Route path="*" component={NotFound} />
           </Switch>

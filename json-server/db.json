@@ -36,7 +36,7 @@
   "products": [
     {
       "productName": "iPhone 7+",
-      "price": 5000000,
+      "price": "5000000",
       "category": "Phone",
       "image": "https://ibox.co.id/media/wysiwyg/PromoOnline/web-banner---iphone-7-plus-rev.png",
       "desc": "HP Terbaikk loh",
@@ -94,10 +94,16 @@
   ],
   "carts": [
     {
-      "userId": 1,
-      "productId": 3,
-      "quantity": 1,
-      "id": 14
+      "userId": 5,
+      "productId": 1,
+      "quantity": 2,
+      "id": 15
+    },
+    {
+      "userId": 5,
+      "productId": 9,
+      "quantity": 2,
+      "id": 16
     }
   ],
   "transactions": [
@@ -337,6 +343,11 @@
       "userId": 3,
       "productId": 2,
       "id": 8
+    },
+    {
+      "userId": 5,
+      "productId": 9,
+      "id": 9
     }
   ],
   "reports": []

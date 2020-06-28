@@ -25,7 +25,7 @@ const CircleBg = ({ children }) => {
 class Navbar extends React.Component {
   state = {
     searchBarIsFocused: false,
-    searcBarInput: "",
+    searchBarInput: "",
     dropdownOpen: false,
   };
 
